@@ -10,9 +10,9 @@ import java.util.logging.Logger;
  * 
  * @author Rohrbasser Yoann, Vogel Maximilian
  */
-public class CalculatorClient {
+public class calcClient {
 
-	static final Logger LOG = Logger.getLogger(CalculatorClient.class.getName());
+	static final Logger LOG = Logger.getLogger(calcClient.class.getName());
     
     final static int BUFFER_SIZE = 1024;
 
@@ -49,17 +49,17 @@ public class CalculatorClient {
 			try {
 				is.close();
 			} catch (IOException ex) {
-				Logger.getLogger(CalculatorClient.class.getName()).log(Level.SEVERE, null, ex);
+				Logger.getLogger(calcClient.class.getName()).log(Level.SEVERE, null, ex);
 			}
 			try {
 				os.close();
 			} catch (IOException ex) {
-				Logger.getLogger(CalculatorClient.class.getName()).log(Level.SEVERE, null, ex);
+				Logger.getLogger(calcClient.class.getName()).log(Level.SEVERE, null, ex);
 			}
 			try {
 				clientSocket.close();
 			} catch (IOException ex) {
-				Logger.getLogger(CalculatorClient.class.getName()).log(Level.SEVERE, null, ex);
+				Logger.getLogger(calcClient.class.getName()).log(Level.SEVERE, null, ex);
 			}
 		}
 	}
@@ -70,7 +70,7 @@ public class CalculatorClient {
 	public static void main(String[] args) {
 		System.setProperty("java.util.logging.SimpleFormatter.format", "%5$s %n");
 
-		CalculatorClient client = new CalculatorClient();
+		calcClient client = new calcClient();
 		client.sendCalculationRequest("127.0.0.1", 5, 6, "+");
 	}
 
