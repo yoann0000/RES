@@ -42,15 +42,15 @@ public class TCPServer {
                 writer = new PrintWriter(clientSocket.getOutputStream());
 
                 LOG.log(Level.INFO, "Starting my job...");
-                String operation = reader.readLine();
-                double num1 = Integer.parseInt(operation.substring(0, operation.indexOf(" ")));
-                operation = operation.substring(operation.indexOf(" "));
-                double num2 = Integer.parseInt(operation.substring(0, operation.indexOf(" ")));
-                operation = operation.substring(operation.indexOf(" "));
-
+                String temp = reader.readLine();
+                double num1 = Integer.parseInt(temp.substring(0, temp.indexOf(" ")));
+                temp = temp.substring(temp.indexOf(" "));
+                String operator = temp.substring(temp.indexOf(" "));
+                temp = temp.substring(temp.indexOf(" "));
+                double num2 = Integer.parseInt(temp);
                 double result = 0;
 
-                switch (operation) {
+                switch (operator) {
                     case "+" :
                         result = num1 + num2;
                         break;
@@ -64,7 +64,7 @@ public class TCPServer {
                         result = num1 / num2;
                         break;
                 }
-                writer.println(String.format("%f %s %f = %f", num1, operation, num2, result));
+                writer.println(String.format("%f %s %f = %f", num1, operator, num2, result));
                 writer.flush();
                 LOG.log(Level.INFO, "Sent result to client...");
 
